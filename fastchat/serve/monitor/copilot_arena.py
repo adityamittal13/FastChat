@@ -43,7 +43,7 @@ def process_copilot_arena_leaderboard(leaderboard):
 def build_copilot_arena_tab():
     if copilot_arena_leaderboard_url is None:
         print("Copilot Arena Leaderboard URL is not set. Skipping this leaderboard.")
-        return
+        raise Exception
     response = requests.get(copilot_arena_leaderboard_url)
     if response.status_code == 200:
         leaderboard = pd.DataFrame(response.json()["elo_data"])
